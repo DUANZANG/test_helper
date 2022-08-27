@@ -3,6 +3,7 @@
 #include "chime/core/platform/logging.hpp"
 #include <random>
 #include <system_error>
+#include <iostream>
 
 namespace test_helper {
 
@@ -15,6 +16,10 @@ public:
 
   Tensor(int64_t num_col, int64_t num_row) : cols(num_col), rows(num_row) {
     data.reset(new float[num_col * num_row]);
+        grad.reset(new float[num_col * num_row]);
+    for (int64_t i = 0; i < rows * cols; i++) {
+       grad.get()[i] = 0;
+    }
   }
 
   Tensor() : cols(0), rows(0) {
@@ -56,6 +61,26 @@ public:
   std::unique_ptr<float> grad;
 };
 
+
+void ShowGrad(const Tensor &matrix) {
+  for (int64_t i = 0; i < matrix.rows; i++) {
+    std::cout << "[";
+    for (int64_t j = 0; j < matrix.cols; j++) {
+      std::cout << matrix.grad.get()[i * matrix.cols + j] << " ";
+    }
+    std::cout << "]" <<  std::endl;
+  }
+}
+
+void ShowTensor(const Tensor &matrix) {
+  for (int64_t i = 0; i < matrix.rows; i++) {
+    std::cout << "[";
+    for (int64_t j = 0; j < matrix.cols; j++) {
+      std::cout << matrix.data.get()[i * matrix.cols + j] << " ";
+    }
+    std::cout << "]" <<  std::endl;
+  }
+}
 
 
 
