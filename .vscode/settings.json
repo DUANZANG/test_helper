@@ -1,0 +1,11 @@
+{
+    "clangd.fallbackFlags": [
+    "-I/home/dza/documents/chime_helper/bazel-bin/external/com_github_gflags_gflags/_virtual_includes/gflags",
+    "-I/home/dza/documents/chime_helper/bazel-chime_helper/external/org_chime",
+    "-I/home/dza/documents/chime_helper/bazel-bin/external/com_github_google_glog/_virtual_includes/glog",
+    "-I/home/dza/documents/chime_helper/bazel-chime_helper/external/com_github_grpc_grpc/include",
+    "-I/home/dza/documents/chime_helper",
+    "-I/home/dza/documents/chime_helper/bazel-chime_helper/external/com_google_protobuf/src"
+    
+]
+}
